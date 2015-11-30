@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using InterdisciplinaryDomainModel.Database;
 using System.Web.Security;
+using System.Web.Helpers;
 
 namespace Interdisciplinary.Controllers
 {
@@ -21,23 +22,33 @@ namespace Interdisciplinary.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginViewModel model)
         {
-            
             var user = DB.Users.FirstOrDefault(x => x.Email.Equals(model.Email));
             
             if (user != null && user.Password == model.Password)
             {
                 FormsAuthentication.SetAuthCookie(user.Email, model.RememberMe);
-                if (User.IsInRole("Teacher"))
-                {
-
-                }
-                return RedirectToAction("Index","Home");
+               return RedirectToAction("Index", "Home");
             }
             else {
                 ModelState.AddModelError("","Wrong credentials");
                 return RedirectToAction("Index", "Home");
             }
             return View();
+        }
+        [HttpGet]
+        public ActionResult SignUpPartial()
+        {
+            return PartialView();
+        }
+        [HttpPost]
+        public ActionResult SignUpPartial(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                DB.Users.Add(user);
+                DB.SaveChanges();
+            }
+            return RedirectToAction("Login","Login");
         }
     }
 }

@@ -10,11 +10,9 @@ namespace Interdisciplinary.Controllers
 {
     public class HomeController : Controller
     {
-        // GET: Home
-        [Authorize(Roles ="Administrator")]
+      
         public ActionResult Index()
         {
-            User.IsInRole("Administrator");
             var DB = new MysenseiEntities();
             var model = DB.Roles.ToList();
             return View(model);

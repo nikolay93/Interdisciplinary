@@ -1,0 +1,41 @@
+﻿@model InterdisciplinaryDomainModel.Database.User
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("SignUpPartial", "Login", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.LabelFor(x => x.FirstName)
+            @Html.TextBoxFor(x => x.FirstName)
+            @Html.LabelFor(x => x.LastName)
+            @Html.TextBoxFor(x => x.LastName)
+            @Html.LabelFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password)
+            @Html.LabelFor(x => x.Email)
+            @Html.TextBoxFor(x => x.Email)
+            @Html.LabelFor(x => x.Birthday)
+            @Html.TextBoxFor(x => x.Birthday)
+            @Html.LabelFor(x => x.Phone)
+            @Html.TextBoxFor(x => x.Phone)
+            @Html.LabelFor(x => x.City)
+            @Html.TextBoxFor(x => x.City)
+            @Html.LabelFor(x => x.Address)
+            @Html.TextBoxFor(x => x.Address)
+            @Html.LabelFor(x => x.Summary)
+            @Html.TextBoxFor(x => x.Summary)
+            @Html.LabelFor(x => x.Education)
+            @Html.TextBoxFor(x => x.Education)
+            @Html.ValidationSummary()
+            <input type="submit" value="submit" />
+        }
+    </div>
+</body>
+</html>
+

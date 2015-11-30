@@ -16,7 +16,7 @@
     <div> 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
         @Html.LabelFor(x => x.Email)
         @Html.TextBoxFor(x => x.Email)
         @Html.LabelFor(x => x.Password)
@@ -24,6 +24,8 @@
         @Html.ValidationSummary()
     <input type="submit" value="submit" />
 }
+        @Html.Partial("_SignUpPartial")
+        @Html.Partial("_SignUpPartialStudent")
     </div>
 </body>
 </html>

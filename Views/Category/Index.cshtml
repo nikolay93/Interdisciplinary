@@ -1,0 +1,25 @@
+﻿@model IEnumerable<InterdisciplinaryDomainModel.Database.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categories</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Categories</title>
+
+</head>
+<body>
+    <div>
+        @foreach (var category in Model)
+        {
+          <p><a>@category.CategoryName</a></p> 
+        }
+
+    </div>
+</body>
+</html>
